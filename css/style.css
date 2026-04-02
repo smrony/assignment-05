@@ -1,3 +1,7 @@
+@import url("https://googleapis.com");
+body {
+  font-family: "Raleway", sans-serif;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,6 +15,9 @@
   max-width: 1320px;
   padding: 0px 30px;
 }
+.text-gray {
+  color: rgba(51, 51, 51, 0.5);
+}
 .login-card {
   width: 350px;
   min-height: 350px;
@@ -18,4 +25,78 @@
   margin: 0px auto;
   border-radius: 10px;
   padding: 25px;
+}
+.login-header {
+  text-align: center;
+}
+.logo {
+  padding-bottom: 10px;
+}
+.logo img {
+  width: 80px;
+}
+.heading-text {
+  padding-bottom: 10px;
+}
+.heading-text h1 {
+  font-size: 20px;
+}
+.heading-text p {
+  font-size: 12px;
+}
+.login-form {
+  padding: 10px 0px;
+}
+.login-form input,
+label {
+  display: block;
+  width: 100%;
+  padding: 5px 0px;
+}
+.login-form input {
+  border-radius: 7px;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+.login-form input[type="button"] {
+  padding: 10px 20px;
+  border: 0px;
+  background-color: #4a00ff;
+  color: aliceblue;
+  margin-top: 10px;
+}
+.text-sm {
+  font-size: 12px;
+}
+.text-blue {
+  color: #4a00ff;
+}
+.divider {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.divider span::after {
+  content: "";
+  display: inline-block;
+  width: 40%;
+  height: 1px;
+  background-color: #ccc;
+  margin-left: 5px;
+}
+.divider span::before {
+  content: "";
+  display: inline-block;
+  width: 40%;
+  height: 1px;
+  background-color: #ccc;
+  margin-right: 5px;
+}
+.demo-credentials {
+  text-align: center;
+}
+.userpass-card {
+  margin-top: 10px;
+  padding: 20px;
+  background-color: #ccc;
+  border-radius: 10px;
 }
