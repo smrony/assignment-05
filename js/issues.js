@@ -130,6 +130,9 @@ function showModal() {
   });
 }
 function showIssueDetails(issue) {
+  document.querySelectorAll(".issue_modal").forEach((b) => {
+    b.classList.add("show");
+  });
   const modal = document.getElementById("issue_modal");
   const content = document.getElementById("modal-content");
 
@@ -167,6 +170,10 @@ function showIssueDetails(issue) {
             </div>
           </div>
   `;
-  modal.showModal();
+}
+function closeModal() {
+  document.querySelectorAll(".issue_modal").forEach((b) => {
+    b.classList.remove("show");
+  });
 }
 loadIssuesFromAPI();

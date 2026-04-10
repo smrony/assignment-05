@@ -17,6 +17,7 @@ body {
   display: inline-block;
   margin-bottom: 5px;
   margin-right: 10px;
+  cursor: pointer;
 }
 .solid-red {
   color: white;
@@ -176,6 +177,7 @@ label {
   color: #333;
   font-size: 14px;
   border: 1px solid #ccc;
+  cursor: pointer;
 }
 .active {
   background: #4800ffe1;
@@ -259,6 +261,7 @@ label {
   border-radius: 7px;
   border-top: 3px solid purple;
   box-shadow: 0px 0px 5px 0px #ccc;
+  cursor: pointer;
 }
 .issue-card.open {
   border-top: 3px solid green;
@@ -324,7 +327,7 @@ p {
   display: none;
 }
 .issue_modal.show {
-  display: block;
+  display: flex;
 }
 .modal-box {
   width: 50%;
