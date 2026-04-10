@@ -24,6 +24,7 @@
               type="text"
               id="search-input"
               placeholder="Start typing for search anything..."
+              onkeyup="search()"
             />
           </div>
         </nav>
@@ -33,9 +34,9 @@
       <div class="container">
         <div class="tabs">
           <ul>
-            <li class="active">All</li>
-            <li>Open</li>
-            <li>Closed</li>
+            <li onclick="filterByStatus(this)"  class="active" data-status="all">All</li>
+            <li onclick="filterByStatus(this)"  class="" data-status="open" >Open</li>
+            <li onclick="filterByStatus(this)"  class="" data-status="closed">Closed</li>
           </ul>
         </div>
         <div class="issue-counter-label">
@@ -44,7 +45,7 @@
               <img src="assets/Aperture.png" alt="" />
             </div>
             <div class="issue-counter-text">
-              <h1>50 Issues</h1>
+              <h1 id="issue-counter">0 Issues</h1>
               <p class="text-gray">Track and manage your project issues</p>
             </div>
           </div>
@@ -55,390 +56,13 @@
             </ul>
           </div>
         </div>
-        <div class="issue-cards">
+        <div id="spinner" class="text-center spinner hidden">
+          <i class="fa-solid fa-spinner"></i>
+          <p class="text-gray">Issues Loading</p>
+        </div>
+        <div class="issue-cards" id="issue-list">
           <div class="issue-card">
-            <div class="card-head">
-              <span class="open-issue"
-                ><i class="fa-solid fa-spinner"></i
-              ></span>
-              <span class="closed-issue"
-                ><i class="fa-regular fa-circle-check"></i
-              ></span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
-          <div class="issue-card">
-            <div class="card-head">
-              <span>0</span>
-              <span class="button red">High</span>
-              <span class="button yellow">Medius</span>
-              <span class="button gray">Low</span>
-            </div>
-            <div class="card-body">
-              <h2 class="card-title">Fix navigation menu on mobile devices</h2>
-              <p class="text-gray text-sm mb-10">
-                The navigation menu doesn't collapse properly on mobile devices.
-              </p>
-              <span class="button red">Bug</span>
-              <span class="button yellow">Help wanted</span>
-              <span class="button green">Enhancement</span>
-            </div>
-            <div class="card-foot">
-              <p class="text-gray text-sm mb-10">#1 by jphn_doe</p>
-              <p class="text-gray text-sm">02/04/2026</p>
-            </div>
-          </div>
+             
         </div>
       </div>
     </section>
@@ -481,5 +105,6 @@
         </form>
       </div>
     </div>
+    <script src="js/issues.js"></script>
   </body>
 </html>
