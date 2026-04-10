@@ -17,6 +17,11 @@ body {
   display: inline-block;
   margin-bottom: 5px;
 }
+.solid-red {
+  color: white;
+  background-color: red;
+  border: none;
+}
 .red {
   border: 1px solid #ef4444;
 }
@@ -240,7 +245,7 @@ label {
   width: 23%;
   padding: 10px;
   border-radius: 7px;
-  border-top: 3px solid rgb(8, 206, 8);
+  border-top: 3px solid green;
   box-shadow: 0px 0px 5px 0px #ccc;
 }
 .card-body {
@@ -252,9 +257,22 @@ label {
   align-items: center;
   padding-bottom: 15px;
 }
-.card-head span:first-child {
+.open-issue {
   background-color: rgb(155, 229, 155);
   border-radius: 50px;
+  color: rgba(0, 128, 0, 0.8);
+  height: 25px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  font-size: 12px;
+}
+.closed-issue {
+  background-color: rgba(128, 0, 128, 0.3);
+  border-radius: 50px;
+  color: purple;
   height: 25px;
   width: 25px;
   display: flex;
@@ -274,6 +292,41 @@ label {
 .card-foot {
   padding: 10px 0px 5px 0px;
   border-top: 1px solid #ccc;
+}
+p {
+  line-height: 1.256;
+}
+.issue_modal {
+  width: 100%;
+  position: absolute;
+  background-color: #3333337c;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-box {
+  width: 50%;
+  min-height: 300px;
+  border-radius: 15px;
+  background-color: #eeeff2;
+  padding: 30px;
+}
+.modal-footer {
+  padding: 10px;
+  background-color: #cccccc34;
+  border-radius: 7px;
+  display: flex;
+}
+.modal-box form {
+  display: flex;
+  justify-content: end;
+  padding-top: 15px;
+}
+.width-1-2 {
+  width: 48%;
 }
 /* Tablet */
 @media (max-width: 1024px) {
