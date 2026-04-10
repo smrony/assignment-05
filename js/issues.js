@@ -84,6 +84,7 @@ function renderIssues(ls) {
               <p class="text-gray text-sm">${issue.createdAt}</p>
             </div>
     `;
+    card.onclick = () => showIssueDetails(issue);
     container.appendChild(card);
   });
   document.getElementById("issue-counter").innerHTML = `
@@ -121,5 +122,51 @@ function search() {
       issue.labels.some((s) => s.toLowerCase().includes(term)),
   );
   renderIssues(filtered);
+}
+// Show issue Details in Modal
+function showModal() {
+  document.querySelectorAll(".issue_modal").forEach((b) => {
+    b.classList.add("show");
+  });
+}
+function showIssueDetails(issue) {
+  const modal = document.getElementById("issue_modal");
+  const content = document.getElementById("modal-content");
+
+  content.innerHTML = `
+  <h1 class="card-title">${issue.title}</h1>
+          <div class="mb-10">
+            <span class="button green">${issue.status}</span>
+            <span class="text-gray text-sm mb-10"
+              ><i class="fa-solid fa-circle"></i> ${issue.author}</span
+            >
+            <span class="text-gray text-sm">
+              <i class="fa-solid fa-circle"></i>${issue.createdAt}</span
+            >
+          </div>
+          <div class="mb-10">
+            ${issue.labels
+              .slice(0, 3)
+              .map(
+                (label) =>
+                  `<span class="button ${getLabelsBadgeClass(label)}">${label}</span>`,
+              )
+              .join("")} 
+          </div>
+          <p class="text-gray mb-10">
+           ${issue.description}
+          </p>
+          <div class="modal-footer">
+            <div class="width-1-2">
+              <p class="text-gray">Assignee:</p>
+              <p class=""><strong>${issue.assignee}</strong></p>
+            </div>
+            <div class="width-1-2">
+              <p class="text-gray">Priority:</p>
+              <button class="button solid-red">${issue.priority}</button>
+            </div>
+          </div>
+  `;
+  modal.showModal();
 }
 loadIssuesFromAPI();

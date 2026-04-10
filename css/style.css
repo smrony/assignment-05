@@ -323,6 +323,9 @@ p {
   align-items: center;
   display: none;
 }
+.issue_modal.show {
+  display: block;
+}
 .modal-box {
   width: 50%;
   min-height: 300px;
